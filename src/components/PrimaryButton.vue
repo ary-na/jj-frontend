@@ -1,19 +1,18 @@
 <template>
-  <div class="d-grid mb-3">
-    <button
-      class="btn btn-primary"
+    <button class="btn mb-3"
       :type="type"
       :class="variant"
       @click="handleClick"
     >
-      {{ label }}
+      <slot>
+        {{ label }}
+      </slot>
     </button>
-  </div>
 </template>
 
 <script>
 export default {
-  name: "btn-re",
+  name: "main-btn",
   props: {
     type: {
       type: String,
@@ -22,7 +21,6 @@ export default {
     label: String,
     variant: {
       type: String,
-      default: "primary",
     },
   },
   emits: ["click"],

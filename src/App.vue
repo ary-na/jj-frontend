@@ -1,35 +1,25 @@
 <template>
-  <div id="app">
-    <nav>
-      <router-link to="/">Home</router-link> |
-      <router-link to="/login">Login</router-link>
-    </nav>
-    <!-- This is where the routed components will be displayed -->
-    <router-view />
-  </div>
+  <v-app>
+    <Navbar />
+
+    <!-- Router View for Routed Components -->
+    <v-main>
+      <div class="container">
+        <div class="row d-flex vh-100 justify-items-center align-items-center">
+          <router-view />
+        </div>
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
+import Navbar from "./components/Navbar.vue";
+
 export default {
   name: "App",
+  components: {
+    Navbar,
+  },
 };
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-nav {
-  margin-bottom: 20px;
-}
-nav a {
-  text-decoration: none;
-  color: #42b983;
-  margin: 0 10px;
-}
-</style>
