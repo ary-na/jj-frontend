@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md position-absolute w-100 p-4">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">JJ Reads</a>
+      <a class="navbar-brand fst-italic" href="#">JJ Reads</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -37,8 +37,8 @@ export default {
 </script>
 
 <style scoped>
-nav {
-  color:black;
+.navbar-brand {
+  font-family: "Playwrite ID Guides", cursive;
 }
 </style>
  

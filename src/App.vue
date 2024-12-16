@@ -1,7 +1,6 @@
 <template>
   <v-app>
     <Navbar />
-
     <!-- Router View for Routed Components -->
     <v-main>
       <div class="container">
@@ -10,16 +9,19 @@
         </div>
       </div>
     </v-main>
+    <Footer/>
   </v-app>
 </template>
 
 <script>
 import Navbar from "./components/Navbar.vue";
+import Footer from "./components/Footer.vue";
 
 export default {
   name: "App",
   components: {
     Navbar,
+    Footer,
   },
 };
 </script>
