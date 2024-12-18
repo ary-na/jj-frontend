@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="handleSubmit">
     <h1 class="mb-3 fs-4">Welcome back!</h1>
-    <p class="mb-3">Please Sign in to continue.</p>
+    <p class="mb-3 text-muted">Please Login to continue.</p>
     <InputField
       label="Email"
       id="email"
@@ -19,7 +19,7 @@
     <div class="d-grid">
       <Button type="submit" class="btn-primary" label="Login"></Button>
     </div>
-    <div class="d-flex align-items-center my-4">
+    <div class="d-flex align-items-center mb-3">
       <hr class="flex-grow-1" />
       <span class="mx-3 text-muted">Or sign in using</span>
       <hr class="flex-grow-1" />
@@ -71,15 +71,19 @@
         </svg>
       </Button>
     </div>
-    <span
-      >Don't have an account?
-      <a class="link-underline-info" href="#">Register</a></span
-    >
+    <div class="text-center">
+      <span
+        >Don't have an account?
+        <router-link class="link-underline-info" to="/register"
+          >Register</router-link
+        ></span
+      >
+    </div>
   </form>
 </template>
 
 <script>
-import InputField from "./InputField.vue";
+import InputField from "../InputField.vue";
 import Button from "../PrimaryButton.vue";
 
 export default {

@@ -1,15 +1,14 @@
 <template>
   <v-app>
-    <Navbar />
-    <!-- Router View for Routed Components -->
+    <Navbar v-if="!$route.meta.hideNavAndFooter" />
     <v-main>
       <div class="container">
-        <div class="row d-flex vh-100 justify-items-center align-items-center">
+        <div class="row position-relative overflow-hidden d-flex min-vh-100 justify-items-center align-items-center">
           <router-view />
         </div>
       </div>
     </v-main>
-    <Footer/>
+    <Footer v-if="!$route.meta.hideNavAndFooter" />
   </v-app>
 </template>
 

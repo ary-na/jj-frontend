@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar navbar-expand-md position-absolute w-100 p-4">
+  <nav class="navbar navbar-expand-md p-4">
     <div class="container-fluid">
-      <a class="navbar-brand fst-italic" href="#">JJ Reads</a>
+      <router-link class="navbar-brand fst-italic" to="/">JJ Reads</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -14,17 +14,21 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav me-auto">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/">Home</a>
+            <router-link class="nav-link" to="/">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">About</a>
+            <router-link class="nav-link" to="/about">About</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
+            <router-link class="nav-link" to="/contact">Contact</router-link>
           </li>
         </ul>
+        <div class="d-flex gap-2">
+          <router-link to="/login" class="btn btn-light">Login</router-link>
+          <router-link to="/register" class="btn btn-light">Register</router-link>
+        </div>
       </div>
     </div>
   </nav>
@@ -41,4 +45,3 @@ export default {
   font-family: "Playwrite ID Guides", cursive;
 }
 </style>
- 
