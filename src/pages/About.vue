@@ -1,4 +1,5 @@
 <template>
+  <div class="row min-vh-100 d-flex align-items-center">
   <div class="col-12">
     <h1 class="mb-5">What is <span class="fst-italic">JJ Reads</span> ?</h1>
     <p>
@@ -20,6 +21,7 @@
       time, payment is required to begin using the service.
     </p>
   </div>
+</div>
 </template>
 
 <script>

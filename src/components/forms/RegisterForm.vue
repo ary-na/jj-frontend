@@ -79,7 +79,7 @@
         </Button>
       </div>
       <div class="text-center">
-        <span>Already have an account?<router-link class="link-underline-info" to="/login"> Login</router-link></span>
+        <span>Already have an account? <router-link class="link-underline-info" to="/login">Login</router-link></span>
       </div>
     </form>
   </template>

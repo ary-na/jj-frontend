@@ -1,7 +1,7 @@
 <template>
   <nav class="navbar navbar-expand-md p-4">
     <div class="container-fluid">
-      <router-link class="navbar-brand fst-italic" to="/">JJ Reads</router-link>
+      <router-link class="navbar-brand fst-italic fs-6" to="/">JJ Reads</router-link>
       <button
         class="navbar-toggler"
         type="button"
@@ -26,8 +26,8 @@
           </li>
         </ul>
         <div class="d-flex gap-2">
-          <router-link to="/login" class="btn btn-light">Login</router-link>
-          <router-link to="/register" class="btn btn-light">Register</router-link>
+          <router-link to="/login" class="btn btn-light w-100">Login</router-link>
+          <router-link to="/register" class="btn btn-light w-100">Register</router-link>
         </div>
       </div>
     </div>
