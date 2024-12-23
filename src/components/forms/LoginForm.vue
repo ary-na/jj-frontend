@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" novalidate>
     <h1 class="mb-3 fs-4">Welcome back!</h1>
     <p class="mb-3 text-muted">Please Login to continue.</p>
     <InputField
@@ -8,6 +8,7 @@
       type="email"
       v-model="email"
       placeholder="Enter your email."
+      :validationMessage="validationErrors.email"
     />
     <InputField
       label="Password"
@@ -15,9 +16,15 @@
       type="password"
       v-model="password"
       placeholder="Enter your password."
+      :validationMessage="validationErrors.password"
     />
     <div class="d-grid">
-      <Button type="submit" class="btn-primary" label="Login"></Button>
+      <Button
+        type="submit"
+        class="btn-primary"
+        :loading="loading"
+        label="Login"
+      ></Button>
     </div>
     <div class="d-flex align-items-center mb-3">
       <hr class="flex-grow-1" />
@@ -85,6 +92,10 @@
 <script>
 import InputField from "../InputField.vue";
 import Button from "../PrimaryButton.vue";
+//import Auth from "../../api/Auth.js";
+import { useRouter } from "vue-router";
+import Validation from "../../utils/Validation";
+import Toast from "../../utils/Toast";
 
 export default {
   name: "LoginForm",
@@ -96,12 +107,56 @@ export default {
     return {
       email: "",
       password: "",
+      loading: false, // Track the loading state
+      validationErrors: {
+        email: "",
+        password: "",
+      },
     };
   },
+  setup() {
+    const router = useRouter();
+    return { router };
+  },
   methods: {
-    handleSubmit() {
-      console.log(`Logging in with ${this.email} and ${this.password}`);
-      // Add API logic here
+    validateForm() {
+      const errors = Validation.validateLoginForm({
+        email: this.email,
+        password: this.password,
+      });
+      console.log("Validation Errors:", errors);
+      this.validationErrors = errors;
+      return Object.keys(errors).length === 0;
+    },
+    async handleSubmit() {
+      this.loading = true; // Show the loading spinner
+
+      // Validate the form first
+      if (!this.validateForm()) {
+        this.loading = false; // Hide the loading spinner if validation fails
+        return; // Stop further execution if validation fails
+      }
+
+      try {
+        // const userData = {
+          // email: this.email,
+          // password: this.password,
+        // };
+
+        // Call the register method
+        // await Auth.login(userData);
+
+        // Show success toast and navigate to the login page
+        Toast.success("Account created successfully! Please log in.");
+        this.router.push("/dashboard");
+      } catch (error) {
+        // Handle errors and show a toast
+        const errorMessage = error.message || "Failed to create an account.";
+        Toast.error(errorMessage);
+        console.error("Registration error:", error);
+      } finally {
+        this.loading = false; // Hide the loading spinner
+      }
     },
   },
 };

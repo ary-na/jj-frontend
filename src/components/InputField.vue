@@ -1,7 +1,7 @@
 <template>
-  <div class="mb-3">
+  <div class="mb-3 position-relative">
     <label class="form-label" :for="id">
-        {{ label }}
+      {{ label }}
     </label>
     <input
       class="form-control"
@@ -10,8 +10,12 @@
       :placeholder="placeholder"
       :value="modelValue"
       @input="updateValue($event)"
+      :class="{ 'is-invalid': validationMessage }"
       required
     />
+    <div v-if="validationMessage" class="invalid-tooltip">
+      {{ validationMessage }}
+    </div>
   </div>
 </template>
 
@@ -23,6 +27,7 @@ export default {
     type: String, // Type of the input (text, email, etc.)
     id: String, // ID for the input (also used by the label)
     placeholder: String, // Placeholder text for the input
+    validationMessage: String, // Message to display if validation fails
   },
   methods: {
     updateValue(event) {

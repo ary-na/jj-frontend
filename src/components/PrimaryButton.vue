@@ -1,13 +1,20 @@
 <template>
-    <button class="btn mb-3"
-      :type="type"
-      :class="variant"
-      @click="handleClick"
-    >
+  <button
+    class="btn mb-3"
+    :type="type"
+    :class="variant"
+    :disabled="loading"
+    @click="handleClick"
+  >
+    <template v-if="loading">
+      <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+    </template>
+    <template v-else>
       <slot>
         {{ label }}
       </slot>
-    </button>
+    </template>
+  </button>
 </template>
 
 <script>
@@ -22,11 +29,17 @@ export default {
     variant: {
       type: String,
     },
+    loading: {
+      type: Boolean,
+      default: false,
+    },
   },
   emits: ["click"],
   methods: {
     handleClick(event) {
-      this.$emit("click", event);
+      if (!this.loading) {
+        this.$emit("click", event);
+      }
     },
   },
 };
