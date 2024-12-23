@@ -41,7 +41,7 @@ export default class Toast {
       gsap.to(toastEl, {
         opacity: 0,
         y: -50,
-        duration: 5,
+        duration: 0.2,
         onComplete: () => {
           console.log("Toast disappearing, removing...");
           toastEl.remove();

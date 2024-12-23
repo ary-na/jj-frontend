@@ -10,7 +10,7 @@ body {
 
 #toast-container {
   position: fixed;
-  top: 60px;
+  top: 50px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

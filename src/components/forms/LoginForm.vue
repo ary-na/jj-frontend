@@ -147,7 +147,6 @@ export default {
         // await Auth.login(userData);
 
         // Show success toast and navigate to the login page
-        Toast.success("Account created successfully! Please log in.");
         this.router.push("/dashboard");
       } catch (error) {
         // Handle errors and show a toast
