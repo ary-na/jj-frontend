@@ -95,7 +95,6 @@ import Button from "../PrimaryButton.vue";
 //import Auth from "../../api/Auth.js";
 import { useRouter } from "vue-router";
 import Validation from "../../utils/Validation";
-import Toast from "../../utils/Toast";
 
 export default {
   name: "LoginForm",
@@ -151,7 +150,7 @@ export default {
       } catch (error) {
         // Handle errors and show a toast
         const errorMessage = error.message || "Failed to create an account.";
-        Toast.error(errorMessage);
+        this.$toast.error(errorMessage);
         console.error("Registration error:", error);
       } finally {
         this.loading = false; // Hide the loading spinner
