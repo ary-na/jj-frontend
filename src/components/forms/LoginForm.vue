@@ -106,6 +106,7 @@ export default {
     return {
       email: "",
       password: "",
+      currentUser: true,
       loading: false, // Track the loading state
       validationErrors: {
         email: "",
@@ -122,6 +123,7 @@ export default {
       const errors = Validation.validateLoginForm({
         email: this.email,
         password: this.password,
+        currentUser: this.currentUser
       });
       console.log("Validation Errors:", errors);
       this.validationErrors = errors;

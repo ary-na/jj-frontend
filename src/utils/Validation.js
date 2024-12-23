@@ -18,7 +18,10 @@ export default class Validation {
     return "";
   }
 
-  static validatePassword(password) {
+  static validatePassword(password, currentUser=false) {
+    if(!password.trim() && currentUser) {
+      return "You must enter your password.";
+    }
     if (!password.trim()) {
       return "You must enter a password.";
     }
@@ -45,7 +48,7 @@ export default class Validation {
   static validateLoginForm(data) {
     const errors = {};
     errors.email = this.validateEmail(data.email);
-    errors.password = this.validatePassword(data.password);
+    errors.password = this.validatePassword(data.password, data.currentUser);
 
     // Filter out empty messages
     Object.keys(errors).forEach((key) => {
