@@ -3,10 +3,10 @@
 ## Screenshots
 
 **Home page** 
-![Home page](jj-frontend/src/assets/screenshots/home-page.png)
+![Home page](src/assets/screenshots/home-page.png)
 
 **Login page** 
-![Login page](jj-frontend/src/assets/screenshots/login-page.png)
+![Login page](src/assets/screenshots/login-page.png)
 
 ## Project setup
 ```
