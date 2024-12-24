@@ -6,7 +6,7 @@
           <router-view />
       </div>
     </v-main>
-    <Footer v-if="!$route.meta.hideNavAndFooter" />
+    <Footer v-if="!$route.meta.hideNavAndFooter"></Footer>
   </v-app>
 </template>
 

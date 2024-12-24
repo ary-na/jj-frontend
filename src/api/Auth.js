@@ -26,6 +26,23 @@ class Auth {
       throw error.response?.data || error;
     }
   }
+
+  async login(userData) {
+    try {
+      const response = await axios.post(
+        `${this.apiBaseUrl}/auth/login`,
+        userData
+      );
+      this.currentUser = response.data.user;
+      if (!localStorage.getItem("accessToken")) {
+        localStorage.setItem("accessToken", response.data.accessToken);
+      }
+      return response.data;
+    } catch (error) {
+      console.error("Login failed:", error.response?.data || error.message);
+      throw error.response?.data || error;
+    }
+  }
 }
 
 export default new Auth();

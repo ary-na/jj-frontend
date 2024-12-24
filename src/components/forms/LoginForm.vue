@@ -92,7 +92,7 @@
 <script>
 import InputField from "../InputField.vue";
 import Button from "../PrimaryButton.vue";
-//import Auth from "../../api/Auth.js";
+import Auth from "../../api/Auth.js";
 import { useRouter } from "vue-router";
 import Validation from "../../utils/Validation";
 
@@ -139,13 +139,14 @@ export default {
       }
 
       try {
-        // const userData = {
-          // email: this.email,
-          // password: this.password,
-        // };
+        const userData = {
+          email: this.email,
+          password: this.password,
+        };
 
-        // Call the register method
-        // await Auth.login(userData);
+        const user = await Auth.login(userData);
+        this.$toast.error(`Welcome ${user.name}`);
+
 
         // Show success toast and navigate to the login page
         this.router.push("/dashboard");
@@ -153,7 +154,7 @@ export default {
         // Handle errors and show a toast
         const errorMessage = error.message || "Failed to create an account.";
         this.$toast.error(errorMessage);
-        console.error("Registration error:", error);
+        console.error("Login error:", error);
       } finally {
         this.loading = false; // Hide the loading spinner
       }

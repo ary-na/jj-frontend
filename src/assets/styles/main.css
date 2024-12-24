@@ -8,6 +8,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.v-application {
+  background-color: #e5e5e5;
+}
+
 #toast-container {
   position: fixed;
   top: 50px;
