@@ -224,7 +224,7 @@
 import RegisterForm from "../components/forms/RegisterForm.vue";
 
 export default {
-  name: "register-form",
+  name: "register-page",
   components: {
     RegisterForm,
   },

@@ -144,9 +144,8 @@ export default {
           password: this.password,
         };
 
-        const user = await Auth.login(userData);
-        this.$toast.error(`Welcome ${user.name}`);
-
+        await Auth.login(userData);  
+        this.$toast.success(`Welcome ${Auth.currentUser.name}`);
 
         // Show success toast and navigate to the login page
         this.router.push("/dashboard");

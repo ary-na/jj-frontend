@@ -37,7 +37,6 @@ class Auth {
       if (!localStorage.getItem("accessToken")) {
         localStorage.setItem("accessToken", response.data.accessToken);
       }
-      return response.data;
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
       throw error.response?.data || error;

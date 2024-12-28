@@ -214,7 +214,7 @@
 import LoginForm from "../components/forms/LoginForm.vue";
 
 export default {
-  name: "login-form",
+  name: "login-page",
   components: {
     LoginForm,
   },
