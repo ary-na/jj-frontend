@@ -34,7 +34,7 @@ const routes = [
     name: "NotFound",
     component: NotFound,
     meta: { hideNavAndFooter: true },
-  }, // Catch-all route for 404
+  },
 ];
 
 const router = createRouter({
@@ -44,7 +44,7 @@ const router = createRouter({
 
 // Add a global navigation guard
 router.beforeEach((to, from, next) => {
-  const isLoggedIn = !!localStorage.getItem("user"); // Replace with your auth logic
+  const isLoggedIn = !!localStorage.getItem("accessToken"); // Replace with your auth logic
 
   if (to.meta.requiresAuth && !isLoggedIn) {
     next({ name: "NotFound" }); // Navigate to 404 if not logged in
