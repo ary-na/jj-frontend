@@ -26,8 +26,10 @@
           </li>
         </ul>
         <div class="d-flex gap-2">
-          <router-link to="/login" class="btn btn-light w-100">Login</router-link>
-          <router-link to="/register" class="btn btn-light w-100">Register</router-link>
+          <router-link v-if="!isLoggedIn" to="/login" class="btn btn-light w-100">Login</router-link>
+          <router-link v-if="!isLoggedIn" to="/register" class="btn btn-light w-100">Register</router-link>
+          <router-link v-if="isLoggedIn" to="/dashboard" class="btn btn-light w-100">Dashboard</router-link>
+          <router-link v-if="isLoggedIn" to="/" @click="logout" class="btn btn-light w-100">Logout</router-link>
         </div>
       </div>
     </div>
@@ -35,8 +37,23 @@
 </template>
 
 <script>
+import Auth from "../api/Auth.js";
 export default {
+  data() {
+    return {
+      isLoggedIn: false,
+    };
+  },
   name: "navigation-bar",
+  created() {
+    this.isLoggedIn = Object.keys(Auth.currentUser).length !== 0;
+  },
+  methods: {
+    logout() {
+      Auth.logout();
+      this.$toast.success("You have been logged out.");
+    },
+  }
 };
 </script>
 

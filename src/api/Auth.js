@@ -42,6 +42,11 @@ class Auth {
       throw error.response?.data || error;
     }
   }
+
+  async logout() {
+    localStorage.removeItem("accessToken");
+    this.currentUser = {};
+  }
 }
 
 export default new Auth();
