@@ -1,7 +1,9 @@
 <template>
   <nav class="navbar navbar-expand-md p-4">
     <div class="container-fluid">
-      <router-link class="navbar-brand fst-italic fs-6" to="/">JJ Reads</router-link>
+      <router-link class="navbar-brand fst-italic fs-6" to="/"
+        >JJ Reads</router-link
+      >
       <button
         class="navbar-toggler"
         type="button"
@@ -26,10 +28,31 @@
           </li>
         </ul>
         <div class="d-flex gap-2">
-          <router-link v-if="!isLoggedIn" to="/login" class="btn btn-light w-100">Login</router-link>
-          <router-link v-if="!isLoggedIn" to="/register" class="btn btn-light w-100">Register</router-link>
-          <router-link v-if="isLoggedIn" to="/dashboard" class="btn btn-light w-100">Dashboard</router-link>
-          <router-link v-if="isLoggedIn" to="/" @click="logout" class="btn btn-light w-100">Logout</router-link>
+          <router-link
+            v-if="!isLoggedIn"
+            to="/login"
+            class="btn btn-light w-100"
+            >Login</router-link
+          >
+          <router-link
+            v-if="!isLoggedIn"
+            to="/register"
+            class="btn btn-light w-100"
+            >Register</router-link
+          >
+          <router-link
+            v-if="isLoggedIn"
+            to="/dashboard"
+            class="btn btn-light w-100"
+            >Dashboard</router-link
+          >
+          <router-link
+            v-if="isLoggedIn"
+            to="/"
+            @click="logout"
+            class="btn btn-light w-100"
+            >Logout</router-link
+          >
         </div>
       </div>
     </div>
@@ -39,26 +62,24 @@
 <script>
 import Auth from "../api/Auth.js";
 export default {
+  name: "navigation-bar",
   data() {
     return {
-      isLoggedIn: false,
+      isLoggedIn: Object.keys(Auth.currentUser).length !== 0,
     };
-  },
-  name: "navigation-bar",
-  created() {
-    this.isLoggedIn = Object.keys(Auth.currentUser).length !== 0;
   },
   methods: {
     logout() {
-      Auth.logout();
+      Auth.logout(); // Remove token from localStorage
+      this.isLoggedIn = false; // Update state
       this.$toast.success("You have been logged out.");
     },
-  }
+  },
+  watch: {
+    // Optional: React to token changes in localStorage dynamically
+    $route() {
+      this.isLoggedIn = Object.keys(Auth.currentUser).length !== 0;
+    },
+  },
 };
 </script>
-
-<style scoped>
-.navbar-brand {
-  font-family: "Playwrite ID Guides", cursive;
-}
-</style>
